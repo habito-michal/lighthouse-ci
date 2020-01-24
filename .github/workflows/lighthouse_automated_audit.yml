@@ -23,7 +23,7 @@ jobs:
           lighthouseCheckResults: ${{ steps.lighthouseCheck.outputs.lighthouseCheckResults }}
           minAccessibilityScore: "70"
           minBestPracticesScore: "70"
-          minPerformanceScore: "30"
+          minPerformanceScore: "10"
           minProgressiveWebAppScore: "40"
           minSeoScore: "75"
       - name: Upload artifacts
