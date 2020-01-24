@@ -1,8 +1,7 @@
 name: Post deploy audit
 on:
-  push:
-    branches:
-      - master
+  schedule:
+    - cron: "*/10 * * * *"
 jobs:
   lighthouse-check:
     runs-on: ubuntu-latest
