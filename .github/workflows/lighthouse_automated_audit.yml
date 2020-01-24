@@ -1,4 +1,4 @@
-name: Post deploy audit
+name: Lighthouse audit
 
 on:
   schedule:
