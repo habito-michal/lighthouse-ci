@@ -16,16 +16,16 @@ jobs:
         with:
           outputDirectory: /tmp/artifacts
           urls: "https://www.habito.com,https://www.habito.com/about-us"
+          slackWebhookUrl: ${{ secrets.LIGHTHOUSE_CHECK_WEBHOOK_URL }}
       - name: Handle Lighthouse Check results
         uses: foo-software/lighthouse-check-status-action@master
         with:
           lighthouseCheckResults: ${{ steps.lighthouseCheck.outputs.lighthouseCheckResults }}
           minAccessibilityScore: "70"
           minBestPracticesScore: "70"
-          minPerformanceScore: "10"
+          minPerformanceScore: "30"
           minProgressiveWebAppScore: "40"
           minSeoScore: "75"
-          slackWebhookUrl: ${{ secrets.LIGHTHOUSE_CHECK_WEBHOOK_URL }}
       - name: Upload artifacts
         uses: actions/upload-artifact@master
         with:
