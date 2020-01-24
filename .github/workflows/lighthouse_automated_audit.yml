@@ -26,6 +26,7 @@ jobs:
           minPerformanceScore: "10"
           minProgressiveWebAppScore: "40"
           minSeoScore: "75"
+          slackWebhookUrl: ${{ secrets.LIGHTHOUSE_CHECK_WEBHOOK_URL }}
       - name: Upload artifacts
         uses: actions/upload-artifact@master
         with:
