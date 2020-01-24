@@ -2,7 +2,7 @@ name: Post deploy audit
 
 on:
   schedule:
-    - cron: "*/30 * * * *"
+    - cron: "*/5 * * * *"
 
 jobs:
   lighthouse-check:
@@ -16,11 +16,7 @@ jobs:
         with:
           outputDirectory: /tmp/artifacts
           urls: "https://www.habito.com,https://www.habito.com/about-us,https://www.habito.com/mortgages/mortgage-comparison,https://www.habito.com/mortgages/mortgage-calculator"
-      - name: Upload artifacts
-        uses: actions/upload-artifact@master
-        with:
-          name: Lighthouse reports
-          path: /tmp/artifacts
+          slackWebhookUrl: ${{ secrets.LIGHTHOUSE_CHECK_WEBHOOK_URL }}
       - name: Handle Lighthouse Check results
         uses: foo-software/lighthouse-check-status-action@master
         with:
@@ -30,3 +26,8 @@ jobs:
           minPerformanceScore: "10"
           minProgressiveWebAppScore: "40"
           minSeoScore: "75"
+      - name: Upload artifacts
+        uses: actions/upload-artifact@master
+        with:
+          name: Lighthouse reports
+          path: /tmp/artifacts
