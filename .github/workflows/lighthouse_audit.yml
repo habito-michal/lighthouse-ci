@@ -4,13 +4,14 @@ on:
     branches:
       - master
 jobs:
-  perf:
+  lighthouse-check:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@master
       - run: mkdir /tmp/artifacts
       - name: Run Lighthouse
         uses: foo-software/lighthouse-check-action@master
+        id: lighthouseCheck
         with:
           outputDirectory: /tmp/artifacts
           urls: "https://www.habito.com,https://www.habito.com/about-us,https://www.habito.com/mortgages/mortgage-comparison,https://www.habito.com/mortgages/mortgage-calculator"
